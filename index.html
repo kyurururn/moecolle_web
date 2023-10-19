@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ja">
+    <head>
+        <meta charset="utf-8">
+        <title>MoeColle</title>
+    </head>
+    <body>        
+        <img id="qr" src="https://www.dropbox.com/scl/fi/ji9d2pdlng0jrpz8bq3vc/1.jpg?rlkey=c9gv0r0bbxl0no1rsc7vguuia&dl=1">
+    </body>
+    <style>
+        body{
+            height:100dvh;
+            width:100dvw;
+            display:flex;
+            justify-content:center;
+            align-items:center;
+            overflow:hidden;
+        }
+
+        #qr{
+            width:98vw;
+        }
+    </style>
+    <script>
+        function getUrlQueries() {
+            var queryStr = window.location.search.slice(1);
+                queries = {};
+                
+            if (!queryStr) {
+                return queries;
+            }
+            
+            queryStr.split('&').forEach(function(queryStr) {
+                var queryArr = queryStr.split('=');
+                queries[queryArr[0]] = queryArr[1];
+            });
+            
+            return queries;
+        }
+
+        document.getElementById("qr").src = "https://www.dropbox.com/scl/fi/" + getUrlQueries()["image_id"] + "?rlkey=" + getUrlQueries()["rlkey"] + "&dl=1";
+    </script>
+</html>
